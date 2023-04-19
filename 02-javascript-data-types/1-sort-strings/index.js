@@ -7,12 +7,12 @@
 export function sortStrings(arr, param = 'asc') {
     let result = [...arr];
     function compare(a, b) {
-		return a.localeCompare(b, "ru", { caseFirst: 'upper' });	
+		return a.localeCompare(b, ["ru", "en"], { caseFirst: 'upper' });	
 	}	
 
     if(param == 'asc') {
       return result.sort(compare);
-    } else {
+    } else if(param == 'desc') {
       return result.sort(compare).reverse();
 	} 
 }
