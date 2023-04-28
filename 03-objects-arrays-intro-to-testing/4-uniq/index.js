@@ -5,11 +5,11 @@
  */
 export function uniq(arr) {
     if(!arr) {
-        return new Array(0);
+        return [];
     }
 	let result = [];
-	for(let elem of arr) {
-		if(result.indexOf(elem) == -1) {
+	for(const elem of arr) {
+		if(result.indexOf(elem) === -1) {
 			result.push(elem);
 		}
 	}

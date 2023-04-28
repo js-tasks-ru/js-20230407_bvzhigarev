@@ -11,7 +11,7 @@ export default class NotificationMessage {
 
     get template() {
         return `
-            <div class="notification ${this.type}" style="--value:20s" id="notificationMessage">
+            <div class="notification ${this.type}" style="--value:${this.duration / 100}s" id="notificationMessage">
                 <div class="timer"></div>
                 <div class="inner-wrapper">
                     <div class="notification-header">${this.type}</div>
@@ -28,8 +28,7 @@ export default class NotificationMessage {
         wrapper.innerHTML = this.template;
         this.element = wrapper.firstElementChild;
         document.body.append(this.element);
-        window.setTimeout(this.remove, this.duration);
-        //console.log(this.element === document.getElementById('notificationMessage'));
+        setTimeout(this.remove, this.duration);
     }
 
     show() {
@@ -39,15 +38,8 @@ export default class NotificationMessage {
         this.render();
     }
 
-    hide() {
-
-    }
-
     remove() {
         document.getElementById('notificationMessage').remove()
-        //if(this.element) {
-        //    this.element.remove();
-        //}
     }
     
     destroy() {

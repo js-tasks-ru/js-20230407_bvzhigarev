@@ -5,11 +5,12 @@
  */
 export function createGetter(field) {
 	return function getter(obj) {
-		for (let key of field.split('.')) {
+		const fieldArray = field.split('.');
+		for (const key of fieldArray) {
 			if(obj[key]) {
                 obj = obj[key];
             } else {
-                return undefined;
+                return obj[key];
             }    
 		}
 		return obj;
